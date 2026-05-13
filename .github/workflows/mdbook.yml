@@ -20,7 +20,7 @@ jobs:
     env:
       MDBOOK_VERSION: 0.4.21
     steps:
-      - uses: actions/checkout@v4                     # v3 → v4
+      - uses: actions/checkout@v4
       - name: Install mdBook
         run: |
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
@@ -29,11 +29,13 @@ jobs:
           cargo install mdbook-emojicodes
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5               # v3 → v5
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true   # 👈 添加这个参数
       - name: Build with mdBook
         run: mdbook build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3        # v1 → v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./book
 
@@ -46,4 +48,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4                 # v2 → v4
+        uses: actions/deploy-pages@v4
