@@ -31,8 +31,8 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
         with:
-          token: ${{ secrets.PAGES_TOKEN }}   # 👈 使用新配置的 PAT
-          enablement: true   # 👈 添加这个参数
+          token: ${{ secrets.PAGES_TOKEN }}   # 添加这一行，使用 PAT
+          enablement: true
       - name: Build with mdBook
         run: mdbook build
       - name: Upload artifact
